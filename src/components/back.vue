@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <el-container >
+  <div style="height: 100%">
+    <el-container style="height: 100%">
       <el-header height="56px" style="padding-left: 0px;padding-right: 0px;">
         <Header/>
       </el-header>
-      <el-container style="margin-top: 10px">
+      <el-container style="margin-top: 10px;height: 100%">
         <el-aside width="200px" style="background-color: #545c64">
           <Aside/>
         </el-aside>
@@ -44,7 +44,7 @@
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    height: 550px;
+    height: 100%;
   }
   .el-aside{
     margin-bottom: 0;

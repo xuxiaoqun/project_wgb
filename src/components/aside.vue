@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div  style="height: 100%">
     <el-menu text-color="#fff"  active-text-color="#ffd04b" router
              background-color="#545c64" default-active="/" unique-opened>
       <el-menu-item index="/">

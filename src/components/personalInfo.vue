@@ -30,7 +30,7 @@
 
       </el-form>
     </div>
-    <div >
+    <div style="float: left">
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="爱好：">
           <el-input v-model="form.vip_like" style="width: 400px" type="textarea" rows="23" ></el-input>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content-wrapper">
     <div class="content" >
       {{msg}}
     </div>
@@ -15,11 +15,15 @@
   }
 </script>
 <style scoped>
+  .content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
 .content{
-  text-align: center;
-  padding-top: 200px;
-  padding-bottom: 200px;
   font-size: 18px;
   letter-spacing: 10px;
+  padding-top: -10%;
 }
 </style>
