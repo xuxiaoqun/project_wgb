@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="form">
-      <span style="margin-right: 20px">选购套餐:</span>
+      <span style="margin-right: 20px;color: #505D77;font-size: 15px">选购套餐:</span>
 
       <el-tooltip class="item" effect="dark" :content="item.meal_time + ':' + item.meal_price" placement="top-start"
                   v-for="item in meal" :key="item.id">
-        <el-radio v-model="radio" :label="item.meal_name" >{{item.meal_name}}</el-radio>
+        <el-radio v-model="radio" :label="item.meal_name" style="color: #505D77">{{item.meal_name}}</el-radio>
       </el-tooltip>
       <el-button  type="primary"  @click="buy" style="margin-left: 10px">确认购买</el-button>
   </div>

@@ -4,7 +4,7 @@
       <el-form :inline="true" :model="searchForm" >
 
         <el-form-item>
-          <span style="font-size: 15px">搜索条件：</span>
+          <span style="font-size: 15px;color: #505D77">搜索条件：</span>
         </el-form-item>
         <el-form-item >
           <el-input v-model="searchForm.condition_name" placeholder="课程名称"></el-input>

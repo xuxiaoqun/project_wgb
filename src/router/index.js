@@ -85,17 +85,17 @@ export default new Router({
         {
           path:'recentlyVisited',
           component:RecentlyVisited,
-          beforeEnter (to, rfom, next) {
-            // 到哪里去，从哪里来，是否往下加载模板
-
-            var obj = window.localStorage.getItem("user");
-            var type = JSON.parse(obj).type;
-            if(type === 1){
-              //this.$message.success('信息发布成功！');
-              next('/')
-            }
-            next()
-          }
+          // beforeEnter (to, rfom, next) {
+          //   // 到哪里去，从哪里来，是否往下加载模板
+          //
+          //   var obj = window.localStorage.getItem("user");
+          //   var type = JSON.parse(obj).type;
+          //   if(type === 1){
+          //     //this.$message.success('信息发布成功！');
+          //     next('/')
+          //   }
+          //   next()
+          // }
         },
         {
           path:'checkIn',

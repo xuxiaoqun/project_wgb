@@ -3,7 +3,7 @@
     <div class="gen" style="text-align: center;width: 50%">
       <div style="">
         <el-form ref="form" :model="form" label-width="80px">
-          <el-form-item label="累计签到:" style="width: 200px">
+          <el-form-item label="累计签到:" style="width: 200px;color: #505D77">
             <el-input-number v-model="form.days"  :min="1"  ></el-input-number>
           </el-form-item>
         </el-form>

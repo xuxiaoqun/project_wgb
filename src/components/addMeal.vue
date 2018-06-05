@@ -61,7 +61,7 @@
 </script>
 <style scoped>
   .personal{
-    margin-left: 10%;
+    margin-left: 10px;
     margin-right: 10px;
   }
 

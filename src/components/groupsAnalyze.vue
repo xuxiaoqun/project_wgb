@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="like" >
-        <el-form ref="form" :model="form">
+    <div class="group" >
+        <el-form ref="form" :model="form" label-width="100px">
           <el-form-item  label="会员团体名称">
             <el-input v-model="form.title" style="width: 50%;"></el-input>
           </el-form-item>
@@ -35,7 +35,7 @@
   }
 </script>
 <style scoped>
-  .like{
+  .group{
     margin-left: 20%;
     margin-top: 5%;
     width:50%;
