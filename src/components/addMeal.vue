@@ -6,10 +6,10 @@
           <el-input v-model="form.vip_name" placeholder="套餐名称"></el-input>
         </el-form-item>
         <el-form-item >
-          <el-input v-model="form.vip_name" placeholder="套餐价格"></el-input>
+          <el-input v-model="form.meal_price" placeholder="套餐价格"></el-input>
         </el-form-item>
         <el-form-item >
-          <el-input v-model="form.vip_name" placeholder="套餐期限"></el-input>
+          <el-input v-model="form.meal_time" placeholder="套餐期限"></el-input>
         </el-form-item>
         <el-form-item >
           <el-button type="primary" @click="onSubmit">添加</el-button>
