@@ -105,14 +105,14 @@
             course_name: '游泳课',
             course_date:['2018-05-21','2018-05-25'],
             course_desc: '每天下午两点钟体育馆集合',
-            course_coach:'魏根波',
+            course_coach:'李世石',
             course_amount:10
           },
           {
             course_name: '健身课',
             course_date:['2018-05-21','2018-05-25'],
             course_desc: '每天下午两点钟健身房集合',
-            course_coach:'魏SB',
+            course_coach:'白如',
             course_amount:10
           }
         ],

@@ -15,6 +15,8 @@ import Birthday from '@/components/birthday'
 import Expire from '@/components/expire'
 import RecentlyVisited from '@/components/recentlyVisited'
 import CheckIn from '@/components/checkIn'
+import FaceCheck from '@/components/faceCheck'
+import GroupsAnalyze from '@/components/groupsAnalyze'
 
 import Login from '@/components/login'
 import Register from '@/components/register'
@@ -73,6 +75,10 @@ export default new Router({
           component:Birthday
         },
         {
+          path:'groupsAnalyze',
+          component:GroupsAnalyze
+        },
+        {
           path:'expire',
           component:Expire
         },
@@ -94,6 +100,9 @@ export default new Router({
         {
           path:'checkIn',
           component:CheckIn
+        },{
+          path:'faceCheck',
+          component:FaceCheck
         },
       ]
     },

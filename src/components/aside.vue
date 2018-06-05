@@ -56,13 +56,19 @@
         <el-menu-item index="recentlyVisited">
           <span slot="title">最近访问标签</span>
         </el-menu-item>
+        <el-menu-item index="groupsAnalyze">
+         <span slot="title">会员团体标签</span>
+         </el-menu-item>
       </el-submenu>
       <el-submenu index="/checkIn" :style="{display:display1}">
         <template slot="title">
           <span>签到管理</span>
         </template>
         <el-menu-item index="checkIn" :style="{display:display5}">
-          <span slot="title">签到奖励</span>
+          <span slot="title">累计签到设置</span>
+        </el-menu-item>
+        <el-menu-item index="faceCheck" :style="{display:display5}">
+        <span slot="title">人脸识别签到设置</span>
         </el-menu-item>
       </el-submenu>
       <el-submenu index="/system" :style="{display:display3}">

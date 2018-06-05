@@ -66,7 +66,7 @@
 </script>
 <style scoped>
   .form{
-    margin-left: 10px;
+    margin-left: 10%;
     margin-top: 5px;
     width:40%;
   }

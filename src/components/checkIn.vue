@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="text-align: center;width: 50%">
+    <div class="gen" style="text-align: center;width: 50%">
       <div style="">
         <el-form ref="form" :model="form" label-width="80px">
           <el-form-item label="累计签到:" style="width: 200px">
@@ -30,5 +30,12 @@
 <style scoped>
   .check{
     text-align: center;
+  }
+
+  .gen{
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-right: 20px;
+    float: left;
   }
 </style>

@@ -42,13 +42,13 @@
       return {
         form: [
           {
-            desk_name: '张三',
-            desk_password:'123',
+            desk_name: '刘星',
+            desk_password:'lx12345',
             desk_rank:'2'
           },
           {
-            desk_name: '李四',
-            desk_password:'123',
+            desk_name: '傅园慧',
+            desk_password:'fff778899',
             desk_rank:'2'
           }
         ],
