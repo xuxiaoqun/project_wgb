@@ -17,6 +17,7 @@ import RecentlyVisited from '@/components/recentlyVisited'
 import CheckIn from '@/components/checkIn'
 import FaceCheck from '@/components/faceCheck'
 import GroupsAnalyze from '@/components/groupsAnalyze'
+import Push from '@/components/push'
 
 import Login from '@/components/login'
 import Register from '@/components/register'
@@ -65,6 +66,10 @@ export default new Router({
         {
           path:'deskManage',
           component:DeskManage
+        },
+        {
+          path:'push',
+          component:Push
         },
         {
           path:'like',

@@ -40,6 +40,14 @@
           <span slot="title">办理套餐</span>
         </el-menu-item>
       </el-submenu>
+      <el-submenu index="/push" :style="{display:display2}">
+        <template slot="title">
+          <span>推送管理</span>
+        </template>
+        <el-menu-item index="push">
+          <span slot="title">推送设置</span>
+        </el-menu-item>
+      </el-submenu>
       <el-submenu index="/flag" :style="{display:display1}">
         <template slot="title">
           <span>标签管理</span>
