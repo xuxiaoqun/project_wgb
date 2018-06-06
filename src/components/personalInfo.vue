@@ -38,7 +38,7 @@
       </el-form>
     </div>
     <div style="clear: both;text-align: center">
-      <el-button type="primary" >修改信息</el-button>
+      <el-button type="primary" @click="memberinfo_change">修改信息</el-button>
     </div>
 
   </div>
@@ -48,6 +48,7 @@
     data: function(){
       return {
         form:{
+            id: 0,
             vip_name: '王凯顺',
             vip_password:'',
             vip_sex:'男',
@@ -60,7 +61,50 @@
           vip_phone:'13112349239'
           }
       }
-    }
+    },
+    methods:{
+      refresh:function(){
+        var url = this.Host + '/api/members_info';
+        console.log(url);
+        this.$axios.post(url).then(res => {
+          if(res.data.members) {
+            this.form.id = res.data.members.Id;
+            this.form.vip_sex = res.data.members.Sex;
+            this.form.vip_name = res.data.members.Nickname;
+            this.form.vip_age = res.data.members.Age;
+            this.form.vip_birthday = res.data.members.Birth_date;
+            this.form.vip_like = res.data.members.Hobby;
+            this.form.vip_height = res.data.members.Height;
+            this.form.vip_weight = res.data.members.Weight;
+            this.form.vip_shape = res.data.members.Shape;
+            this.form.vip_phone = res.data.members.Phone;
+          }else{
+            this.$message.error(res.data.msg + "!");
+          }
+        }).catch(function(error){
+          console.log(error);
+        })
+
+      },
+      memberinfo_change:function(){
+        var url = this.Host + '/api/memberinfo_change';
+        console.log(url);
+        this.$axios.post(url,this.form).then(res => {
+          if(res.data.success) {
+            this.$message.success('修改成功！');
+            this.refresh();
+          }else{
+            this.$message.error(res.data.msg + "!");
+          }
+        }).catch(function(error){
+          console.log(error);
+        })
+
+      }
+    },
+    mounted(){
+      this.refresh();
+    },
   }
 </script>
 <style scoped>

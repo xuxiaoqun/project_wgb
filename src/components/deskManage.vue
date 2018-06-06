@@ -17,7 +17,7 @@
         <el-table :data="form" style="width: 100%">
           <el-table-column label="用户名" prop="desk_name"  >
           </el-table-column>
-          <el-table-column label="密码" prop="desk_password" >
+          <el-table-column label="初始密码" prop="desk_password" >
           </el-table-column>
           <el-table-column label="账号人员">
             <template slot-scope="scope">
