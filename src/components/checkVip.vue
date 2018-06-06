@@ -27,19 +27,19 @@
     </div>
     <div class="course_table">
       <el-table :data="form" style="width: 100%">
-        <el-table-column label="姓名" prop="vip_name"  width="80" fixed>
+        <el-table-column label="姓名" prop="Nickname"  width="80" fixed>
         </el-table-column>
-        <el-table-column label="性别" prop="vip_sex" width="90">
+        <el-table-column label="性别" prop="Sex" width="90">
         </el-table-column>
-        <el-table-column label="年龄" prop="vip_age" width="90">
+        <el-table-column label="年龄" prop="Birth_date" width="90">
         </el-table-column>
-        <el-table-column label="兴趣" prop="vip_like" width="160">
+        <el-table-column label="兴趣" prop="Hobby" width="160">
         </el-table-column>
-        <el-table-column label="身高" prop="vip_height" width="90">
+        <el-table-column label="身高" prop="Height" width="90">
         </el-table-column>
-        <el-table-column label="体重" prop="vip_weight" width="90">
+        <el-table-column label="体重" prop="Weight" width="90">
         </el-table-column>
-        <el-table-column label="体型" prop="vip_shape" width="90">
+        <el-table-column label="体型" prop="Shape" width="90">
         </el-table-column >
         <el-table-column label="会员卡类型" prop="vip_type" width="120">
         </el-table-column >
@@ -129,32 +129,7 @@
   export default {
     data: function(){
       return {
-        form: [
-          {
-            vip_name: '沈天睿',
-            vip_sex:'男',
-            vip_age:22,
-            vip_like:'游泳、跑步',
-            vip_height:'175cm',
-            vip_weight:'62kg',
-            vip_shape:'偏瘦',
-            vip_type:'季度卡',
-            vip_joinTime:'2018-05-21',
-            vip_leaveTime:'2018-08-21'
-          },
-          {
-            vip_name: '张猛治',
-            vip_sex:'男',
-            vip_age:22,
-            vip_like:'健身、玩游戏',
-            vip_height:'170cm',
-            vip_weight:'72kg',
-            vip_shape:'偏胖',
-            vip_type:'年卡',
-            vip_joinTime:'2018-05-21',
-            vip_leaveTime:'2019-05-21'
-          }
-        ],
+        form: [],
         searchForm:{
           condition_name:'',
           condition_joinTime:[],
@@ -166,6 +141,18 @@
       }
     },
     methods:{
+      getVipInfo(){
+        var url = this.Host + '/api/members_list';
+        this.$axios.post(url).then(res => {
+          if(res.data.members) {
+            this.form = res.data.members;
+          }else{
+            this.$message.error(res.data.msg + "!");
+          }
+        }).catch(function(error){
+          console.log(error);
+        })
+      },
       handleEdit:function(index, row){
 //        this.dialogVisible = true;
         this.update_course = row;
@@ -176,6 +163,9 @@
       handleRenew:function(index, row){
         this.dialogVisible = true;
       }
+    },
+    created(){
+      this.getVipInfo();
     }
   }
 </script>

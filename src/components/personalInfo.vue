@@ -10,10 +10,14 @@
           <el-input v-model="form.vip_sex" style="width: 200px"></el-input>
         </el-form-item>
         <el-form-item label="年龄：">
-          <el-input v-model="form.vip_age" style="width: 200px"></el-input>
+          <el-input v-model="form.vip_age" style="width: 200px" disabled></el-input>
         </el-form-item>
         <el-form-item label="生日：">
-          <el-input v-model="form.vip_birthday" style="width: 200px"></el-input>
+          <el-date-picker
+            v-model="form.vip_birthday"
+            type="date"
+            placeholder="选择日期" style="width: 200px" value-format="yyyy-MM-dd" format="yyyy-MM-dd">
+          </el-date-picker>
         </el-form-item>
         <el-form-item label="手机号：">
           <el-input v-model="form.vip_phone" style="width: 200px"></el-input>
@@ -25,7 +29,7 @@
           <el-input v-model="form.vip_weight" style="width: 200px"></el-input>
         </el-form-item>
         <el-form-item label="体型：">
-          <el-input v-model="form.vip_shape" style="width: 200px"></el-input>
+          <el-input v-model="form.vip_shape" style="width: 200px" disabled></el-input>
         </el-form-item>
 
       </el-form>
@@ -65,7 +69,6 @@
     methods:{
       refresh:function(){
         var url = this.Host + '/api/members_info';
-        console.log(url);
         this.$axios.post(url).then(res => {
           if(res.data.members) {
             this.form.id = res.data.members.Id;
