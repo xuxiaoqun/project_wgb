@@ -41,11 +41,11 @@
         </el-table-column>
         <el-table-column label="体型" prop="Shape" width="90">
         </el-table-column >
-        <el-table-column label="会员卡类型" prop="vip_type" width="120">
+        <el-table-column label="会员卡类型" prop="Vip_type" width="120">
         </el-table-column >
-        <el-table-column label="加入时间" prop="vip_joinTime" width="100">
+        <el-table-column label="加入时间" prop="Vip_joinTime" width="100">
         </el-table-column >
-        <el-table-column label="到期时间" prop="vip_leaveTime" width="100">
+        <el-table-column label="到期时间" prop="Vip_leaveTime" width="100">
         </el-table-column >
         <el-table-column label="操作"  fixed="right" width="250">
           <template slot-scope="scope">

@@ -48,6 +48,14 @@
           <span slot="title">推送设置</span>
         </el-menu-item>
       </el-submenu>
+      <el-submenu index="/card" :style="{display:display2}">
+        <template slot="title">
+          <span>会员卡管理</span>
+        </template>
+        <el-menu-item index="addMeal" :style="{display:display5}">
+          <span slot="title">会员卡管理</span>
+        </el-menu-item>
+      </el-submenu>
       <el-submenu index="/flag" :style="{display:display1}">
         <template slot="title">
           <span>标签管理</span>
@@ -87,7 +95,7 @@
           <span slot="title">前台人员管理</span>
         </el-menu-item>
         <el-menu-item index="addMeal" :style="{display:display5}">
-          <span slot="title">套餐管理</span>
+          <span slot="title">会员卡管理</span>
         </el-menu-item>
       </el-submenu>
     </el-menu>

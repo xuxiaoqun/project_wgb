@@ -31,7 +31,6 @@
         <el-form-item label="体型：">
           <el-input v-model="form.vip_shape" style="width: 200px" disabled></el-input>
         </el-form-item>
-
       </el-form>
     </div>
     <div style="float: left">
@@ -39,7 +38,19 @@
         <el-form-item label="爱好：">
           <el-input v-model="form.vip_like" style="width: 400px" type="textarea" rows="23" ></el-input>
         </el-form-item>
+        <img src="">
       </el-form>
+    </div>
+    <div style="float: left">
+      <el-upload
+        class="avatar-uploader"
+        action=""
+        :show-file-list="false"
+        :on-success="handleAvatarSuccess"
+        :before-upload="beforeAvatarUpload">
+        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+      </el-upload>
     </div>
     <div style="clear: both;text-align: center">
       <el-button type="primary" @click="memberinfo_change">修改信息</el-button>
@@ -63,7 +74,9 @@
             vip_weight:'75kg',
             vip_shape:'偏胖',
           vip_phone:'13112349239'
-          }
+          },
+        imageUrl: '',
+        dialogVisible: false
       }
     },
     methods:{
@@ -103,8 +116,15 @@
           console.log(error);
         })
 
+      },
+      handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+      },
+      beforeAvatarUpload(file) {
+
       }
-    },
+    }
+    ,
     mounted(){
       this.refresh();
     },
@@ -116,5 +136,36 @@
   margin-right: 20px;
   float: left;
 }
+.avatar-uploader{
+  background: #fff;
+  border:1px solid #cbc9c0;
+  margin-left: 5px;
+  border-radius: 10px;
+}
 
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 390px;
+  height: 490px;
+  line-height: 490px;
+  text-align: center;
+}
+.avatar {
+  max-width: 390px;
+  display: block;
+}
+  .avatar-uploader-icon{
+    line-height: 490px;
+  }
 </style>
