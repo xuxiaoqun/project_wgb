@@ -4,7 +4,7 @@
       <el-form ref="form" :model="form" label-width="150px">
         <el-form-item  label="被推送标签">
           <el-input v-model="form.flag" style="width: 70%;">
-            <el-button slot="append" icon="el-icon-plus"></el-button>
+            <el-button slot="append" icon="el-icon-plus" @click="dialogVisible = true"></el-button>
           </el-input>
         </el-form-item>
         <el-form-item label="推送信息">
@@ -19,20 +19,20 @@
     </div>
     <div>
       <el-dialog
-        title="提示"
+        title="选择的标签"
         :visible.sync="dialogVisible"
         width="40%"
         :close-on-press-escape="close"
         :close-on-click-modal="close">
         <div>
           <el-checkbox-group
-            v-model="flag">
-            <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+            v-model="checkFlag">
+            <el-checkbox v-for="flag in flags" :label="flag" >{{flag}}</el-checkbox>
           </el-checkbox-group>
         </div>
         <span slot="footer">
-        <el-button @click="cancel">取 消</el-button>
-        <el-button type="primary" @click="updateCourse">确 定</el-button>
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="sure">确 定</el-button>
        </span>
       </el-dialog>
     </div>
@@ -54,7 +54,25 @@
     },
     methods:{
       submit:function(){
-        this.$message.success('信息发布成功！');
+        var url = this.Host + '/api/message';
+        this.$axios.post(url,this.form).then(res => {
+          if(res.data.success) {
+            this.$message.success('推送发布成功！');
+          }else{
+            this.$message.error(res.data.msg + "!");
+          }
+        }).catch(function(error){
+          console.log(error);
+        })
+
+      },
+      sure(){
+        this.dialogVisible = false;
+        this.form.flag = '';
+        for(var i = 0; i<this.checkFlag.length;i++){
+          this.form.flag += this.checkFlag[i] + '；';
+        }
+        console.log(this.checkFlag);
       },
       getFlags(){
         var url = this.Host + '/api/label';
