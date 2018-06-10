@@ -40,11 +40,13 @@
     data: function(){
       return {
         form: {
-          course_name: '',
+          course_name: '游泳课',
           course_date:[],
-          course_desc: '',
-          course_coach:'',
-          course_amount:1
+          course_desc: '11',
+          course_coach:'wgb',
+          course_amount:1,
+          course_start:'',
+          course_end:''
         },
         pickerOptions:{
           disabledDate:function(time){
@@ -55,7 +57,19 @@
     },
     methods:{
       onSubmit:function(){
+        this.form.course_start = this.form.course_date[0];
+        this.form.course_end = this.form.course_date[1];
         console.log(this.form);
+        var url = this.Host + '/api/addCourse';
+        this.$axios.post(url,this.form).then(res => {
+          if(res.data.success) {
+            this.$message.success('课程信息发布成功！');
+          }else{
+            this.$message.error(res.data.msg + "!");
+          }
+        }).catch(function(error){
+          console.log(error);
+        })
       }
     }
   }
