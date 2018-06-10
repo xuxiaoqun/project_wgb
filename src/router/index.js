@@ -109,7 +109,15 @@ export default new Router({
           path:'faceCheck',
           component:FaceCheck
         },
-      ]
+      ],
+      beforeEnter:(to, from, next) =>{
+        if(window.localStorage.getItem("user")){
+          next();
+        }else{
+          this.a.app.$message.error('当前用户还未登录，请登录后再进行此操作！!');
+          next('/login');
+        }
+      }
     },
     {
       path:'/login',

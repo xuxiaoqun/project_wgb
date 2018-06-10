@@ -17,7 +17,11 @@ module.exports = {
         pathRewrite:{
           '^/api':''
         }
-      }
+      },
+      "/photo":{
+        target:"http://192.168.43.13:8081",
+        changeOrigin:true,
+      },
     },
 
     // Various Dev Server settings

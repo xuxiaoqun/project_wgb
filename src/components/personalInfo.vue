@@ -31,6 +31,18 @@
         <el-form-item label="体型：">
           <el-input v-model="form.vip_shape" style="width: 200px" disabled></el-input>
         </el-form-item>
+        <el-form-item label="大头像：">
+          <el-upload style="width: 200px;height: 200px"
+            name="photoupload"
+            class="avatar-uploader"
+            action="/api/api/photo_upload"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar" width="100%">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+        </el-form-item>
       </el-form>
     </div>
     <div style="float: left">
@@ -40,17 +52,6 @@
         </el-form-item>
         <img src="">
       </el-form>
-    </div>
-    <div style="float: left">
-      <el-upload
-        class="avatar-uploader"
-        action=""
-        :show-file-list="false"
-        :on-success="handleAvatarSuccess"
-        :before-upload="beforeAvatarUpload">
-        <img v-if="imageUrl" :src="imageUrl" class="avatar">
-        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-      </el-upload>
     </div>
     <div style="clear: both;text-align: center">
       <el-button type="primary" @click="memberinfo_change">修改信息</el-button>
@@ -68,7 +69,7 @@
             vip_password:'',
             vip_sex:'男',
             vip_age:22,
-            vip_birthday:'1995年6月5日',
+            vip_birthday:null,
             vip_like:'    我喜欢骑自行车和游泳，骑车可以锻炼身体，骑行可以锻炼意志，通过自己的努力到自己想去的地方，最主要的是骑车对环境没有污染，没有排放，比开车环保，建议大家都多多骑车出行，减少污染既锻炼了身体又愉悦了身心，绿色出行，低碳环保，感同身受，乐在其中。                     .        游泳是最受欢迎的健身运动项目之一。适当地进行游泳锻炼，不仅能给人带来心理上的愉悦，塑造流畅和优美的体型，还能够增强心血管系统的机能，增强体质，提高协调性。许多运动项目都容易给机体造成劳损或损伤，但游泳是劳损和损伤率最低的体育活动。因此，游泳是一项很好的、可以终身进行锻炼的健身运动。',
             vip_height:'170cm',
             vip_weight:'75kg',
@@ -97,6 +98,9 @@
           }else{
             this.$message.error(res.data.msg + "!");
           }
+          if(res.data.photo) {
+            this.imageUrl = this.Host + "/"+res.data.photo;
+          }
         }).catch(function(error){
           console.log(error);
         })
@@ -104,7 +108,7 @@
       },
       memberinfo_change:function(){
         var url = this.Host + '/api/memberinfo_change';
-        console.log(url);
+        console.log(this.form.vip_birthday);
         this.$axios.post(url,this.form).then(res => {
           if(res.data.success) {
             this.$message.success('修改成功！');
@@ -117,12 +121,20 @@
         })
 
       },
+      beforeAvatarUpload:function(file) {
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 10;
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 10MB!');
+        }
+        return isJPG && isLt2M;
+      },
       handleAvatarSuccess(res, file) {
         this.imageUrl = URL.createObjectURL(file.raw);
       },
-      beforeAvatarUpload(file) {
-
-      }
     }
     ,
     mounted(){
@@ -136,36 +148,8 @@
   margin-right: 20px;
   float: left;
 }
-.avatar-uploader{
-  background: #fff;
-  border:1px solid #cbc9c0;
-  margin-left: 5px;
-  border-radius: 10px;
+.el-upload{
+  width:20%;
 }
 
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409EFF;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 390px;
-  height: 490px;
-  line-height: 490px;
-  text-align: center;
-}
-.avatar {
-  max-width: 390px;
-  display: block;
-}
-  .avatar-uploader-icon{
-    line-height: 490px;
-  }
 </style>

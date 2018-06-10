@@ -11,6 +11,9 @@
       return {
         msg:"欢迎回来!"
       }
+    },
+    methods:{
+
     }
   }
 </script>

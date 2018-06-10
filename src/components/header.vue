@@ -13,7 +13,7 @@
           <div class="user">
             <el-dropdown @command="handleCommand">
               <span style="font-size: 15px">
-                wgb
+                {{user.userName}}
                 <i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
@@ -50,6 +50,7 @@
           if(res.data.success) {
             this.$message.success('注销成功，即将跳转到登录页!');
             this.$router.push({path: '/login'});
+            window.localStorage.removeItem("user");
           }else{
             this.$message.error(res.data.msg + "!");
           }
@@ -66,7 +67,22 @@
             message: '签到成功！'
           });
         }
+      },
+      getUserInfo(){
+        var url = this.Host + '/api/members_info';
+        this.$axios.post(url).then(res => {
+          if(res.data.success) {
+           this.user.userName = res.data.members.Username;
+          }else{
+            this.$message.error(res.data.msg + "!");
+          }
+        }).catch(function(error){
+          console.log(error);
+        })
       }
+    },
+    created(){
+      this.getUserInfo();
     }
   })
 </script>

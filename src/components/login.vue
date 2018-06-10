@@ -39,6 +39,7 @@
               this.$axios.post(url,this.form).then(res => {
                 if(res.data.success) {
                   this.$message.success('登录成功，即将跳转到主页 !');
+                  window.localStorage.setItem("user",JSON.stringify(res.data.user));
                   this.$router.push({path: '/'});
                 }else{
                   this.$message.error(res.data.msg + "!");
