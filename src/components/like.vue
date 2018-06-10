@@ -3,10 +3,10 @@
     <div class="like" >
         <el-form ref="form" :model="form">
           <el-form-item  label="标题">
-            <el-input v-model="form.title" style="width: 50%;"></el-input>
+            <el-input v-model="form.Title" style="width: 50%;"></el-input>
           </el-form-item>
           <el-form-item label="描述">
-            <el-input type="textarea" v-model="form.desc"
+            <el-input type="textarea" v-model="form.Desc"
                       rows="10" style="width: 50%;">
             </el-input>
           </el-form-item>
@@ -22,14 +22,23 @@
     data: function(){
       return {
         form:{
-          title:'',
-          desc:''
+          Title:'',
+          Desc:''
         }
       }
     },
     methods:{
       submit:function(){
-        this.$message.success('信息发布成功！');
+        var url = this.Host + '/api/hobby';
+        this.$axios.post(url,this.form).then(res => {
+          if(res.data.success) {
+            this.$message.success('信息发布成功！');
+          }else{
+            this.$message.error(res.data.msg + "!");
+          }
+        }).catch(function(error){
+          console.log(error);
+        })
       }
     }
   }

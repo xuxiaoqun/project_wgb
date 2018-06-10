@@ -36,7 +36,7 @@
         <el-menu-item index="personalInfo">
           <span slot="title">个人信息</span>
         </el-menu-item>
-        <el-menu-item index="takeMeal">
+        <el-menu-item index="takeMeal" v-if="user.Role === 9">
           <span slot="title">办理套餐</span>
         </el-menu-item>
       </el-submenu>

@@ -27,15 +27,14 @@
             return {
                 msg:"登录!",
                 form:{
-                    userName:'',
-                    password:''
+                    userName:'stuff',
+                    password:'1234'
                 }
             }
         },
         methods:{
             submit:function(){
               var url = this.Host + '/api/login';
-              console.log(url);
               this.$axios.post(url,this.form).then(res => {
                 if(res.data.success) {
                   this.$message.success('登录成功，即将跳转到主页 !');
