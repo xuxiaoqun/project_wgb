@@ -27,8 +27,8 @@
             return {
                 msg:"登录!",
                 form:{
-                    userName:'member',
-                    password:'1234'
+                    userName:'',
+                    password:''
                 }
             }
         },
